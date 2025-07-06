@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية المستقبل - كورس الأشعة والمفراس</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c5aa0;
+        }
+
+        .logo i {
+            margin-left: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #2c5aa0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #2c5aa0, #1e3a8a);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+
+        .cta-button i {
+            margin-right: 10px;
+        }
+
+        .hero-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        /* Course Section */
+        .course-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .course-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card i {
+            font-size: 3rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .course-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .image-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        .image-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section h3 i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .content-section ul {
+            list-style: none;
+        }
+
+        .content-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .content-section li:before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        /* Instructor Section */
+        .instructor-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 100%);
+            color: white;
+        }
+
+        .instructor-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .instructor-image {
+            text-align: center;
+        }
+
+        .image-placeholder {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .image-placeholder i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .instructor-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-title {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .instructor-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .instructor-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .instructor-badges .badge {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Students Section */
+        .students-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .student-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-right: 4px solid #2c5aa0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .student-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-code {
+            font-size: 0.9rem;
+            color: #2c5aa0;
+            font-weight: 500;
+            background: rgba(44, 90, 160, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .students-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #ffd700;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .footer-logo i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .instructor-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>أكاديمية المستقبل</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#course">الدورة</a></li>
+                    <li><a href="#instructor">المدرب</a></li>
+                    <li><a href="#students">الطلاب</a></li>
+                    <li><a href="#contact">التواصل</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">الكورس التعليمي للأشعة والمفراس</h1>
+                <p class="hero-subtitle">بإشراف نقابة ذوي المهن الصحية</p>
+                <div class="hero-badges">
+                    <span class="badge">X-Ray</span>
+                    <span class="badge">CT Scan</span>
+                    <span class="badge">شهادة معتمدة</span>
+                </div>
+                <button class="cta-button" onclick="scrollToSection('course')">
+                    <i class="fas fa-arrow-down"></i>
+                    اكتشف المزيد
+                </button>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-icon">
+                <i class="fas fa-x-ray"></i>
+            </div>
+            <div class="floating-icon">
+                <i class="fas fa-microscope"></i>
+            </div>
+            <div class="floating-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Details -->
+    <section id="course" class="course-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>تفاصيل الدورة</h2>
+                <p>كورس شامل في مجال الأشعة والتصوير الطبي</p>
+            </div>
+            
+            <div class="course-info">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>تاريخ البدء</h3>
+                    <p>4/7/2025</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>المدة</h3>
+                    <p>أسبوعين</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>الموقع</h3>
+                    <p>كركوك - نقابة ذوي المهن الصحية</p>
+                </div>
+            </div>
+
+            <div class="course-images">
+                <div class="image-card">
+                    <img src="m3.jpg" alt="جهاز الأشعة السينية" onerror="this.src='https://via.placeholder.com/400x300/2c5aa0/ffffff?text=X-Ray+Equipment'">
+                    <div class="image-overlay">
+                        <h4>أجهزة الأشعة السينية</h4>
+                        <p>تدريب عملي على أحدث الأجهزة</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="m1.jpg" alt="جهاز CT Scan" onerror="this.src='https://via.placeholder.com/400x300/2c5aa0/ffffff?text=CT+Scan+Machine'">
+                    <div class="image-overlay">
+                        <h4>أجهزة CT Scan</h4>
+                        <p>التصوير المقطعي المحوسب</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="m2.jpg" alt="التدريب العملي" onerror="this.src='https://via.placeholder.com/400x300/2c5aa0/ffffff?text=Practical+Training'">
+                    <div class="image-overlay">
+                        <h4>التدريب العملي</h4>
+                        <p>في مراكز طبية معتمدة</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-content">
+                <div class="content-section">
+                    <h3><i class="fas fa-book"></i> المحور النظري</h3>
+                    <ul>
+                        <li>أساسيات التشريح وتطبيقه في التصوير الطبي</li>
+                        <li>المصطلحات الطبية الشعاعية</li>
+                        <li>فيزياء الأشعة X-ray</li>
+                        <li>مكونات جهاز الأشعة + تصميم غرفة الأشعة</li>
+                        <li>الاستخدامات الطبية – المزايا والعيوب – الوقاية من الإشعاع</li>
+                    </ul>
+                </div>
+                
+                <div class="content-section">
+                    <h3><i class="fas fa-desktop"></i> محور CT Scan</h3>
+                    <ul>
+                        <li>مقدمة عن التصوير المقطعي CT Scan</li>
+                        <li>مكونات الجهاز – تصميم غرفة التصوير</li>
+                        <li>التحضير للفحص – الأخطاء الشائعة</li>
+                        <li>المصطلحات الطبية الخاصة بالـ CT</li>
+                        <li>مواد التباين وأنواعها واستخداماتها</li>
+                    </ul>
+                </div>
+                
+                <div class="content-section">
+                    <h3><i class="fas fa-hands-helping"></i> المحور العملي</h3>
+                    <ul>
+                        <li>تدريب ميداني في مراكز طبية مختصة</li>
+                        <li>التعرف على غرف الأشعة X-ray و CT scan</li>
+                        <li>تطبيق عملي وواقعي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section id="instructor" class="instructor-section">
+        <div class="container">
+            <div class="instructor-card">
+                <div class="instructor-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+                <div class="instructor-info">
+                    <h2>الأستاذ أركان الأسحاكي</h2>
+                    <p class="instructor-title">المدرب الرئيسي</p>
+                    <p class="instructor-description">
+                        خبير في مجال الأشعة والتصوير الطبي مع سنوات من الخبرة العملية والأكاديمية. 
+                        متخصص في تدريب الكوادر الطبية على أحدث تقنيات التصوير الشعاعي والمقطعي.
+                    </p>
+                    <div class="instructor-badges">
+                        <span class="badge">خبير أشعة</span>
+                        <span class="badge">مدرب معتمد</span>
+                        <span class="badge">استشاري طبي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Students Section -->
+    <section id="students" class="students-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>قائمة الطلاب المشاركين</h2>
+                <p>الطلاب المسجلين في الدورة التدريبية</p>
+            </div>
+            
+            <div class="students-grid" id="studentsGrid">
+                <!-- Students will be populated by JavaScript -->
+            </div>
+            
+            <div class="students-stats">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="totalStudents">17</h3>
+                    <p>إجمالي الطلاب</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>100%</h3>
+                    <p>معدل النجاح المتوقع</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-award"></i>
+                    <h3>معتمدة</h3>
+                    <p>شهادة رسمية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>التواصل معنا</h2>
+                <p>للمزيد من المعلومات والتسجيلات القادمة</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>الموقع الإلكتروني</h3>
+                    <a href="https://futures0.com">futures0.com</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>رقم الهاتف</h3>
+                    <a href="tel:07780829775">07780829775</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>العنوان</h3>
+                    <p>كركوك - طريق بغداد - ما في مول - الطابق الثالث</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>أكاديمية المستقبل</span>
+                </div>
+                <p>&copy; 2025 أكاديمية المستقبل. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Students data
+        const students = [
+            { name: "Fatima Ahmed Bahgat", code: "NO.A005" },
+            { name: "Tabarak Shwkat Yasin", code: "NO.A004" },
+            { name: "Sarah Amer Ali", code: "NO.A006" },
+            { name: "Lana Jamal Nader", code: "NO.A003" },
+            { name: "Amna Tamy Mtar", code: "NO.A002" },
+            { name: "Shahad Qais Abbas", code: "NO.A001" },
+            { name: "Zubaida Tahseen Ali", code: "NO.A007" },
+            { name: "Hala Majed Hassan", code: "NO.A009" },
+            { name: "Wissam Najm Abdullah", code: "NO.A008" },
+            { name: "Mustafa Daoud Abbas", code: "NO.A012" },
+            { name: "Eman Juad Qadr", code: "NO.A011" },
+            { name: "Abdulrahman Abdulwahab Muhammad", code: "NO.A010" },
+            { name: "Mohamed Erfan Nouri", code: "NO.A015" },
+            { name: "Sara Jasim Mohammed", code: "NO.A014" },
+            { name: "Duha Mohamed Hussien", code: "NO.A013" },
+            { name: "Hilalah Nasraldeen Mohammed Ameen", code: "NO.A016" },
+            { name: "Khatab Mohammed Nasser", code: "NO.A017" }
+        ];
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Populate students grid
+        function populateStudents() {
+            const studentsGrid = document.getElementById('studentsGrid');
+            const totalStudentsElement = document.getElementById('totalStudents');
+            
+            if (studentsGrid) {
+                studentsGrid.innerHTML = '';
+                
+                students.forEach((student, index) => {
+                    const studentCard = document.createElement('div');
+                    studentCard.className = 'student-card';
+                    studentCard.style.animationDelay = `${index * 0.1}s`;
+                    
+                    studentCard.innerHTML = `
+                        <div class="student-name">${student.name}</div>
+                        <div class="student-code">${student.code}</div>
+                    `;
+                    
+                    studentsGrid.appendChild(studentCard);
+                });
+            }
+            
+            if (totalStudentsElement) {
+                totalStudentsElement.textContent = students.length;
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Add scroll animations
+        function addScrollAnimations() {
+            const animatedElements = document.querySelectorAll('.info-card, .image-card, .content-section, .stat-card, .contact-card');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Navbar background on scroll
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.header');
+            
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                        navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+                    } else {
+                        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    }
+                });
+            }
+        }
+
+        // Add click effect to buttons
+        function addRippleEffect() {
+            document.querySelectorAll('button, .cta-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            populateStudents();
+            addScrollAnimations();
+            handleNavbarScroll();
+            addRippleEffect();
+            
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add mouse movement effect for floating icons
+        document.addEventListener('mousemove', (e) => {
+            const floatingIcons = document.querySelectorAll('.floating-icon');
+            
+            floatingIcons.forEach((icon, index) => {
+                const speed = (index + 1) * 0.02;
+                const x = (e.clientX * speed);
+                const y = (e.clientY * speed);
+                
+                icon.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
+
