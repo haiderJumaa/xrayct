@@ -16,7 +16,7 @@ const students = [
   { name: "Sara Jasim Mohammed", code: "NO.A014" },
   { name: "Duha Mohamed Hussien", code: "NO.A013" },
   { name: "Hilalah Nasraldeen Mohammed Ameen", code: "NO.A016" },
-  { name: "Khatab Mohammed Nasser", code: "NO.A017" },
+  { name: "Khatab Mohammed Fathel", code: "NO.A017" },
 ]
 
 // Populate students grid
